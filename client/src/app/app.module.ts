@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RecipeAddComponent } from './components/recipe-add.component';
 import { RecipeDetailComponent } from './components/recipe-detail.component';
 import { RecipeListComponent } from './components/recipe-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
