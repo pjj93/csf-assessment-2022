@@ -55,7 +55,7 @@ public class RecipeRestController {
             return ResponseEntity.ok(recipeJsonObj.toString());
         } catch (NoSuchElementException ex) {
             JsonObject err = Json.createObjectBuilder()
-				.add("error", ex.getMessage())
+				.add("error", "recipe does not exist")
 				.build();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err.toString());
         }

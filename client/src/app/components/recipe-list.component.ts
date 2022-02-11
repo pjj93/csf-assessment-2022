@@ -17,7 +17,6 @@ export class RecipeListComponent implements OnInit {
     this.recipeSvc.getAllRecipes().subscribe(resp => {
         this.recipes = resp.recipes
     })
-    console.log("response returned: " + this.recipeSvc.getAllRecipes())
   }
 
   onClick(recipe: Recipe) {
