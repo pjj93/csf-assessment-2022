@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="border border-dark" *ngFor="let recipe of recipes" (click)="onClick(recipe)">
+  <div class="border border-dark" *ngFor="let recipe of recipes" (click)="onClick(recipe)" [routerLink]="['/recipe', recipe.id]">
     <div class="col">
       {{ recipe.title }}
       </div>
