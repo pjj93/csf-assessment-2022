@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeAddComponent } from './components/recipe-add.component';
 import { RecipeDetailComponent } from './components/recipe-detail.component';
@@ -14,12 +15,17 @@ const appRoutes: Routes = [
   { path: 'add', component: RecipeAddComponent },
   { path: "**", redirectTo: '/', pathMatch: 'full' }
 ]
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RecipeListComponent,
+    RecipeDetailComponent,
+    RecipeAddComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
