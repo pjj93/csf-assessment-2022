@@ -1,14 +1,27 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { RecipeAddComponent } from './components/recipe-add.component';
+import { RecipeDetailComponent } from './components/recipe-detail.component';
+import { RecipeListComponent } from './components/recipe-list.component';
 
+
+const appRoutes: Routes = [
+  { path: '', component: RecipeListComponent},
+  { path: 'recipe/:recipeId', component: RecipeDetailComponent},
+  { path: 'add', component: RecipeAddComponent },
+  { path: "**", redirectTo: '/', pathMatch: 'full' }
+]
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
