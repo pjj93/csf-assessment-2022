@@ -1,4 +1,13 @@
 <div class="container mt-5">
   <p>recipe-detail works!</p>
-  <button class="btn btn-dark" [routerLink]="['/']">Back</button>
+  <h2>{{ recipe?.title }}</h2>
+  <img src="{{recipe?.image}}" alt="image of + {{ recipe?.title }}">
+  <!-- <div *ngIf="recipe.ingredients"><span>Ingredients</span>
+    <ol *ngFor="let ingredient of recipe?.ingredients">
+      <li>ingredient</li>
+    </ol>
+  </div> -->
+  <div>
+    <button class="btn btn-dark mt-3" [routerLink]="['/']">Back</button>
+  </div>
 </div>
