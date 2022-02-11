@@ -27,8 +27,11 @@ export class RecipeAddComponent implements OnInit {
   }
 
   onSubmit(formdata: Recipe) {
-    this.recipeSvc.postRecipe(formdata).subscribe(resp => console.log(resp))
-    this.router.navigate(['/']);
+    this.recipeSvc.postRecipe(formdata).subscribe(resp => {
+      console.log(resp)
+      this.router.navigate(['/'])
+    })
+    // this.router.navigate(['/']);
   }
 
   onAddIngredient() {
