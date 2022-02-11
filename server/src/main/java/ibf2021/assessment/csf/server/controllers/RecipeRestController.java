@@ -1,5 +1,6 @@
 package ibf2021.assessment.csf.server.controllers;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -10,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,5 +62,15 @@ public class RecipeRestController {
 				.build();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err.toString());
         }
+	}
+
+    @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> postTodos(@RequestBody Recipe recipe) {
+		
+        this.recipeSvc.addRecipe(recipe);
+        JsonObject ok = Json.createObjectBuilder()
+            .add("message", "Update on %s".formatted(new Date()))
+            .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(ok.toString());
 	}
 }

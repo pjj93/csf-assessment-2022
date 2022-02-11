@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Recipe } from '../models';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-add',
@@ -10,8 +13,9 @@ export class RecipeAddComponent implements OnInit {
 
   form!: FormGroup
   formIngredientArr!: FormArray
+  recipe!: Recipe
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private recipeSvc: RecipeService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -22,8 +26,9 @@ export class RecipeAddComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    console.log(this.form)
+  onSubmit(formdata: Recipe) {
+    this.recipeSvc.postRecipe(formdata).subscribe(resp => console.log(resp))
+    this.router.navigate(['/']);
   }
 
   onAddIngredient() {
