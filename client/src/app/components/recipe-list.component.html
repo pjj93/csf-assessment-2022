@@ -1,8 +1,8 @@
 <div class="container mt-5">
-  <div class="border border-dark" *ngFor="let recipe of recipes" (click)="onClick(recipe)" [routerLink]="['/recipe', recipe.id]">
+  <div class="border border-dark recipe-style" *ngFor="let recipe of recipes" (click)="onClick(recipe)" [routerLink]="['/recipe', recipe.id]">
     <div class="col">
       {{ recipe.title }}
       </div>
     </div>
-    <button type="button" class="button btn-primary mt-3" [routerLink]="['/add']">Add</button>
+    <button type="button" class="button btn-dark mt-3" [routerLink]="['/add']">Add</button>
 </div>
