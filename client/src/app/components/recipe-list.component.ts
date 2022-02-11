@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Recipe } from '../models';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeListComponent implements OnInit {
 
-  constructor() { }
+  recipes!: Recipe[]
+
+  constructor(private recipeSvc: RecipeService) { }
 
   ngOnInit(): void {
+    this.recipeSvc.getAllRecipes().subscribe(resp => {
+        this.recipes = resp.recipes
+    })
+    console.log("response returned: " + this.recipeSvc.getAllRecipes())
   }
 
+  onClick(recipe: Recipe) {
+    console.log(recipe.id)
+    console.log(recipe.title)
+  }
 }

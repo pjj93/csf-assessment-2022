@@ -1,2 +1,8 @@
-<p>recipe-list works!</p>
-<button type="button" class="button btn-primary" [routerLink]="['/add']">Add</button>
+<div class="container mt-5">
+  <div class="border border-dark" *ngFor="let recipe of recipes" (click)="onClick(recipe)">
+    <div class="col">
+      {{ recipe.title }}
+      </div>
+    </div>
+    <button type="button" class="button btn-primary mt-3" [routerLink]="['/add']">Add</button>
+</div>
